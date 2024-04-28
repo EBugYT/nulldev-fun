@@ -17,7 +17,12 @@
                     class="part1-btn btn btn-danger">Yes</a></p>
         </div>
         <div id="part2" style="display: none;">
-            
+            <p>It's not that simple. Enter the phrase bellow</p>
+            <p id="part2-delphrase">delete</p>
+            <input id="part2-delphraseinp" type="text" class="form-control">
+            <br>
+            <button id="part2-btnDel" type="button" class="btn btn-primary disabled"><span
+                    class="glyphicon glyphicon-trash"></span> Delete</button>
         </div>
     </div>
     <script>
@@ -27,8 +32,30 @@
             element.addEventListener("click", e => {
                 part1.style = "display: none;"
                 document.getElementById("part2").style = "display: block;"
+                part2Run()
             })
         });
+        // Part 2
+        var passphraseAnimation = ["delete", "delete", "delete", "delete", "delete", "delete", "delete", "delete", "delet", "dele", "del", "de", "d", "", "", "", "", "", "", "p", "pp", "pph", "pphg", "pphgc", "pphgcn", "pphgcnr", "pphgcnr", "pphgcnr", "pphgcnr", "pphgcnr", "pphgcnr", "pphgcnrkfjymfkd"]
+        var counter1 = 0
+        function part2Run() {
+            var timeout1 = setInterval(() => {
+                if (counter1 > passphraseAnimation.length - 1) {
+                    counter1 = passphraseAnimation.length - 1
+                    clearInterval(timeout1)
+                }
+                document.querySelector("#part2-delphrase").innerText = passphraseAnimation[counter1]
+                console.log("ran")
+                counter1++
+            }, 500)
+
+            setInterval(() => {
+                if (document.getElementById("part2-delphraseinp").value == "pphgcnrkfjymfkd") {
+                    document.getElementById("part2-delphrase").innerText = "hfnfhvndkskfndkfawa"
+                    console.log("set")
+                }
+            })
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
